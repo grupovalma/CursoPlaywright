@@ -3,7 +3,7 @@ import pytest
 
 @pytest.fixture(scope="function")
 def preSetupWork():
-    print("I setup browser instance")
+    print("I setup module instance")
 
 
 ### Notas: Quitamos el @pytest fixture del test1PytestValidation, y usamos conftest.py, para hacerlo global.
