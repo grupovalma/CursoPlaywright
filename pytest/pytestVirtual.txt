@@ -1,0 +1,11 @@
+Crear entorno virtual
+Recomendado
+Un entorno virtual te permite usar Python y pytest sin depender del PATH global.
+
+Desde tu carpeta de proyecto: C:\Users\a.valenzuela\AppData\Local\Python\pythoncore-3.14-64\python.exe -m venv venv
+
+Activa el entorno: venv\Scripts\activate
+
+Instala dependencias: pip install pytest
+
+Ejecuta pruebas: pytest
