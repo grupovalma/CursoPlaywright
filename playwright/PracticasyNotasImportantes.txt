@@ -1,0 +1,23 @@
+Practice Resources for Strengthening Your Testing Skills
+Practice Hub for Automation & Testing Skills
+
+
+
+To truly strengthen your automation skills, I strongly recommend practicing what you learn in this course on real applications.
+
+For that purpose, we maintain a Practice Hub with several hands-on environments designed specifically for testing practice. These include:
+
+• Web applications for UI automation practice
+• APIs for API testing exercises
+• Mobile apps for mobile automation practice
+• LLM / RAG-based applications for testing modern AI systems
+
+You can find these practice resources on rahulshettyacademy.com → Practice Apps.
+
+--
+
+Additionally, if you are learning these skills with the goal of applying them in the industry, you may also want to explore QA job opportunities available related to the technologies covered in this course. These are available under rahulshettyacademy.com → QA Jobs.
+
+Consistent practice on real systems will significantly improve your confidence and practical understanding.
+
+Wishing you the very best in your learning journey! 🚀

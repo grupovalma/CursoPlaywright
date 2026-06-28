@@ -2,15 +2,24 @@
 import pytest
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="module")
 def preWork():
     print("I setup browser instance")
+    return "pass"
+
+@pytest.fixture(scope="function")
+def secondWork():
+    print("I setup secondWork instance")
+    yield
+    print("Tear Down Validation")
 
 #Necesita iniciar con test, si la clase tiene test inicialmente se puede ver una flecha al lado, sino no.
-def test_initialCheck(preWork):
+def test_initialCheck(preWork, secondWork):
     print("This is first test")
+    assert preWork == "pass"
 
-def test_SecondCheck(preSetupWork):
+#@pytest.mark.skip ##Funcion skip, pytest no lo corre.
+def test_SecondCheck(preSetupWork, secondWork):
     print("This is Second test")
 
 
