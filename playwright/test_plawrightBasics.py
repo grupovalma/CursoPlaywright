@@ -1,3 +1,5 @@
+import time
+
 from playwright.sync_api import Page
 
 
@@ -16,3 +18,11 @@ def test_playwrightShortCut(page:Page):
 ## En la flechita verde, puede darle click derecho seleccionar Modify Run configuration: En additional arguments
 ## Puedes escribir --headless, y corre abriendo el browser sin headless.
 ## Desde la consola sin headless ::: pytest .\test_plawrightBasics.py::test_playwrightShortCut --headed
+
+def test_coreLocators(page:Page):
+    page.goto("https://rahulshettyacademy.com/loginpagePractise")
+    page.get_by_label("Username:").fill("rahulshettyacademy") #En esta parte seleccionamos el label, encima del campo
+    page.get_by_label("Password:").fill("Password")
+    page.get_by_role("combobox").select_option("consult") #Combobox verificamos todas las opciones, luego seleccionamos el value. Si hay mas combobox, se elige por indice
+    # time.sleep(5)
+
