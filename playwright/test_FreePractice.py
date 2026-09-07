@@ -1,11 +1,12 @@
 import time
 
-from playwright.sync_api import Page
+from playwright.sync_api import Page, Playwright, expect
 
-def test_personal(playwright):
+def test_personal(playwright:Playwright):
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
     page.goto("https://demo.aduanas.gob.do/")
-    page.get_by_role("button", name="Entrar").click()
-    time.sleep(5)
+    contentFrame = page.frame_locator("#contentFrame")
+    contentFrame.get_by_role("textbox", name="#ctl00_ContentsHolder_txtAccount").fill("00000293")
+    time.sleep(10)
