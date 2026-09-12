@@ -15,6 +15,7 @@ def test_basico(page:Page):
     #Recordar esta parte, primer assertion
     expect(page.get_by_text("Incorrect username/password.")).to_be_visible()
 
+
 def test_firefoxBrwoser(playwright:Playwright):
     firefoxBrowser = playwright.firefox.launch(headless=False)
     page = firefoxBrowser.new_page()
@@ -27,6 +28,10 @@ def test_firefoxBrwoser(playwright:Playwright):
     page.get_by_role("button").click()
 
     expect(page.get_by_text("Incorrect username/password.")).to_be_visible()
+
+    #Ver el video del video 37
+
+
 
 
 
