@@ -1,0 +1,87 @@
+{
+  "info": {
+    "_postman_id": "a2a9a432-ca4f-4790-b735-4ee688b18a01",
+    "name": "PlayWrightCreateOrder",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17029443"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YWIxM2QzOTJiZTdhNGJjMmI2MDY0YzkiLCJ1c2VyRW1haWwiOiJncnVwb3ZhbG1hQGdtYWlsLmNvbSIsInVzZXJNb2JpbGUiOjgyOTc3MDgzNTcsInVzZXJSb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3OTAwMDMwNzMsImV4cCI6MTgyMTU2MDY3M30.y_WqPpLiKnSCA5B0fB8NcTYSLfCEUq9U7pcBa-K5zyw"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"userEmail\":\"grupovalma@gmail.com\",\"userPassword\":\"NewPassword01\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://rahulshettyacademy.com/api/ecom/auth/login",
+          "protocol": "https",
+          "host": [
+            "rahulshettyacademy",
+            "com"
+          ],
+          "path": [
+            "api",
+            "ecom",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2YWIxM2QzOTJiZTdhNGJjMmI2MDY0YzkiLCJ1c2VyRW1haWwiOiJncnVwb3ZhbG1hQGdtYWlsLmNvbSIsInVzZXJNb2JpbGUiOjgyOTc3MDgzNTcsInVzZXJSb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3OTAwMDE1NjMsImV4cCI6MTgyMTU1OTE2M30.9n5LjHwpwSbvqNF60w2TPkbarMJH4ssXGZcEGvavmpM"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"orders\": [\n        {\n            \"country\": \"India\",\n            \"productOrderedId\": \"6960ea76c941646b7a8b3dd5\"\n        }\n    ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://rahulshettyacademy.com/api/ecom/order/create-order",
+          "protocol": "https",
+          "host": [
+            "rahulshettyacademy",
+            "com"
+          ],
+          "path": [
+            "api",
+            "ecom",
+            "order",
+            "create-order"
+          ]
+        },
+        "description": "Create Order"
+      },
+      "response": []
+    }
+  ]
+}
