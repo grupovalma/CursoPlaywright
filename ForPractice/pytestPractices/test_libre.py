@@ -8,6 +8,7 @@ def test_libre(page: Page):
     page.goto("https://demo.aduanas.gob.do/")
     contentFrame = page.frame_locator("#contentFrame")
     leftFrame = page.frame_locator("#leftFrame")
+
     contentFrame.locator("#ctl00_ContentsHolder_txtAccount").fill("00000293")
     contentFrame.locator("#ctl00_ContentsHolder_txtPassword").fill("00")
     contentFrame.locator(".btnLoginC").click()

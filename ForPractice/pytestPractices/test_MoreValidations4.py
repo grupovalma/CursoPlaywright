@@ -15,6 +15,11 @@ def test_UiChecks(page: Page):
     page.get_by_role("button", name="Hide").click() #name = value, recordar.
     expect(page.get_by_placeholder("Hide/Show Example")).to_be_hidden()
 
+    #Mouse Hover
+    page.locator("#mousehover").hover()
+    page.get_by_role("link", name="Reload").click()
+    time.sleep(5)
+
     #Alerts Boxes Vide 42
     page.locator("#name").fill("Americo")
     page.on("dialog", lambda dialog:dialog.accept())
@@ -26,6 +31,7 @@ def test_UiChecks(page: Page):
     pageFrame.get_by_role("link", name="All Access plan").click()
     #Body, es para verificar toda la pagina
     expect(pageFrame.locator("body")).to_contain_text("Happy Subscibers!")
+
 
 def test_Tables(page:Page):
     page.goto("https://rahulshettyacademy.com/seleniumPractise/#/offers")
