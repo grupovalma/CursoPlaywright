@@ -2,7 +2,7 @@ import time
 
 from playwright.sync_api import Page, Playwright, expect
 
-from ForPractice.pytestPractices.utils.apiBase import APIUtils
+from ForPractice.PytestandPlaywright.utils.apiBase import APIUtils
 
 
 def test_session_storage(playwright : Playwright):
@@ -16,6 +16,7 @@ def test_session_storage(playwright : Playwright):
     page.goto("https://rahulshettyacademy.com/client/")
     page.get_by_role("button", name="ORDERS").click()
     expect(page.get_by_text("Your Orders")).to_be_visible()
+    time.sleep(5)
 
 
 
