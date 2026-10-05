@@ -1,3 +1,5 @@
+from ForPractice.PytestandPlaywright.pageObjects.dashboard import DashboardPage
+
 
 class LoginPage:
     def __init__(self, page):
@@ -10,3 +12,5 @@ class LoginPage:
         self.page.locator("#userEmail").fill(userEmail)
         self.page.get_by_placeholder("enter your passsword").fill(userPassword)
         self.page.get_by_role("button", name="login").click()
+        dashboardPage = DashboardPage(self.page)
+        return dashboardPage
