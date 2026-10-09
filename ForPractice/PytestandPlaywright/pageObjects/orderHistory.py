@@ -1,4 +1,4 @@
-from ForPractice.PytestandPlaywright.pageObjects.orderDetails import OrdersDetailsPage
+from pageObjects.orderDetails import OrdersDetailsPage
 
 
 class OrdersHistoryPage:

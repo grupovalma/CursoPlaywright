@@ -1,4 +1,4 @@
-from ForPractice.PytestandPlaywright.pageObjects.orderHistory import OrdersHistoryPage
+from pageObjects.orderHistory import OrdersHistoryPage
 
 
 class DashboardPage:
