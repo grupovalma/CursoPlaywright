@@ -1,10 +1,11 @@
 import time
 
+import pytest
 from playwright.sync_api import Page, Playwright, expect
 
-from ForPractice.PytestandPlaywright.utils.apiBase import APIUtils
+from utils.apiBase import APIUtils
 
-
+@pytest.mark.regression
 def test_session_storage(playwright : Playwright):
     api_utils = APIUtils()
     getToken = api_utils.getToken(playwright)           #Funcion para obtener token desde apiBase
