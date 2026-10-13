@@ -1,0 +1,18 @@
+from playwright.sync_api import Page
+
+from pageObjects.dashboard import DashboardPage
+
+class LoginPage:
+    def __init__(self, page:Page):
+        self.page = page
+
+    def navigate(self):
+        self.page.goto("https://rahulshettyacademy.com/client")
+        print("URL:", self.page.url)
+
+    def login(self, userEmail, userPassword):
+        self.page.locator("#userEmail").fill(userEmail)
+        self.page.get_by_placeholder("enter your passsword").fill(userPassword)
+        self.page.get_by_role("button", name="login").click()
+        dashboardPage = DashboardPage(self.page)
+        return dashboardPage
