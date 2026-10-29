@@ -1,91 +1,49 @@
 import time
+from os import name
+from zoneinfo import reset_tzpath
 
-from playwright.sync_api import Page, expect, Playwright
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.devtools.v151.fed_cm import click_dialog_button
-from selenium.webdriver.support.ui import Select
 import pytest
-from selenium.webdriver.common.keys import Keys
-#Waits
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-
-def test_free(page: Page):
-    page.goto("https://rahulshettyacademy.com/loginpagePractise/")
-    username = page.get_by_label("Username:").fill("rahulshettyacademy")
-    password = page.get_by_label("Password:").fill("Learning@830$3mK2")
-    page.get_by_role("combobox").select_option("consult")
-    page.locator("#terms").check()
-    page.get_by_role("link", name="terms and conditions").click()
-    page.locator( "#signInBtn").click()
-
-    iphonePproduct = page.locator("app-card").filter(has_text="iphone X")
-    iphonePproduct.get_by_role("button").click()
-
-    blackberryProduct = page.locator("app-card").filter(has_text="Blackberry")
-    blackberryProduct.get_by_role("button").click()
-
-    checkOutButton = page.get_by_text("Checkout").click()
-
-    #Recordar que es una clase
-    expect(page.locator(".media-body")).to_have_count(2)
-
-
-
-
-def test_selenium_free():
-
-    driver = webdriver.Chrome()
-
-    wait = WebDriverWait(driver, 50)
-    driver.get("https://rahulshettyacademy.com/loginpagePractise/")
-    driver.maximize_window()
-    username = wait.until(EC.element_to_be_clickable((By.ID, "username"))).send_keys("rahulshettyacademy")
-    password = wait.until(EC.element_to_be_clickable((By.ID, "password"))).send_keys("Learning@830$3mK2")
-
-    comboBox1 = wait.until(EC.element_to_be_clickable((By.XPATH, "//select[@class='form-control']")))
-    intracombo = Select(comboBox1)
-    intracombo.select_by_value("consult")
-
-    I_AgreeCheck = wait.until(EC.element_to_be_clickable((By.ID, "terms"))).click()
-    terms_and_cont = wait.until(EC.element_to_be_clickable((By.XPATH, "//span[@class='text-white termsText']"))).click()
-    singInButton = wait.until(EC.element_to_be_clickable((By.ID, "signInBtn"))).click()
-
-
-    phone_selection = wait.until(EC.presence_of_all_elements_located((By.XPATH, "//app-card[@class='col-lg-3 col-md-6 mb-3']")))
-
-    for i in phone_selection:
-        phone_brand = i.find_element(By.XPATH, ".//h4/a").text
-        #print(phone_brand)
-
-        if phone_brand == "iphone X":
-            add_button = i.find_element(By.XPATH, ".//button[text()='Add ']")
-            add_button.click()
-
-        if phone_brand == "Blackberry":
-            add_button = i.find_element(By.XPATH, ".//button[text()='Add ']")
-            add_button.click()
-            time.sleep(5)
-            break
-
-    checkOutButton = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[@class='nav-link btn btn-primary']"))).click()
-
-    totalProducts = wait.until(EC.visibility_of_all_elements_located((By.XPATH, "//div[@class='media-body']")))
-
-    assert len(totalProducts) >= 2
-
+from playwright.sync_api import Page, Playwright, expect
 
 def test_Siga(page:Page):
-    page.goto("https://demo.aduanas.gob.do/")
     contentFrame = page.frame_locator("#contentFrame")
     leftFrame = page.frame_locator("#leftFrame")
+    popupFrame1 = contentFrame.frame_locator("#popupFrame1")
+    popupFrame2 = popupFrame1.frame_locator("#popupFrame2")
+
+    page.goto("https://demo.aduanas.gob.do/")
 
     contentFrame.locator("#ctl00_ContentsHolder_txtAccount").fill("00000293")
     contentFrame.locator("#ctl00_ContentsHolder_txtPassword").fill("00")
     contentFrame.locator("#ctl00_ContentsHolder_btnLogin").click()
+
+    contentFrame.locator("#jqxScrollBtnDownverticalScrollBarctl00_ContentsHolder_lstSelector").click()
+    contentFrame.locator("#jqxScrollBtnDownverticalScrollBarctl00_ContentsHolder_lstSelector").click()
+    contentFrame.locator("#jqxScrollBtnDownverticalScrollBarctl00_ContentsHolder_lstSelector").click()
+    contentFrame.locator("#jqxScrollBtnDownverticalScrollBarctl00_ContentsHolder_lstSelector").click()
+    contentFrame.locator("#jqxScrollBtnDownverticalScrollBarctl00_ContentsHolder_lstSelector").click()
+
+    contentFrame.get_by_role("option", name="Empresa Naviera").click()
+    contentFrame.locator("#ctl00_ContentsHolder_btnOK").click()
+
+    leftFrame.get_by_role("link", name="Carga de Importación", exact=True).click()
+    leftFrame.get_by_role("link", name="Manifiesto General", exact=True).click()
+
+    contentFrame.get_by_role("button", name="Nuevo").click()
+    contentFrame.locator("#ctl00_ContentsHolder_txtVoyageNo").fill("4321")
+    contentFrame.locator("#ctl00_ContentsHolder_cboTransportType").select_option("IG1007-S")
+    contentFrame.locator("img[onclick=\"SearchPopup('ViaEntrance', 'Destination');\"]").click()
+
+    popupFrame1.locator("#cboAreaCode").select_option(value="10030")
+
+    popupFrame1.locator("img[onclick=\"fn_country();\"]").click()
+
+    field1 = popupFrame2.locator("#txtCountryCode")
+    field1.click()
+    field1.fill("214")
+    popupFrame2.locator(".listTd").click()
+
+
+    time.sleep(2)
+
 
